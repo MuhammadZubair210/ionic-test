@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ 'LIST_MASTER_TITLE' | translate }}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of currentItems">
+      <button ion-item (click)="openItem(item)">
+        <ion-avatar item-start>
+         <!--<img [src]="item.visits.lat"/>-->
+         
+         <button ion-button round outline>{{item.arrival_time}}</button>
+
+        </ion-avatar>
+        
+      <h2 style="width:80%">{{item.name}}</h2>
+      <p style="width:80%">{{item.address}}</p>
+      <p *ngIf="item.iscoverd" style="float: right;margin-top:-2em"><img style="height:22px" src="../../assets/img/tick.png">
+      </p>
+       </button>
+        <!--<ion-note item-end *ngIf="item.visits.lat">{{item.visits.lat}}</ion-note>-->
+
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
